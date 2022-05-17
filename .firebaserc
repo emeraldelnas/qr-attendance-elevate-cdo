@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "qr-elevate": {
+      "hosting": {
+        "qr-attendance-elevate-cdo": [
+          "qr-elevate"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "qr-elevate"
+  }
+}

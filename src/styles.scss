@@ -1,8 +1,23 @@
-@use 'themes' as *;
+@use "themes" as *;
 
-@use '@nebular/theme/styles/globals' as *;
+@use "@nebular/theme/styles/globals" as *;
 
 @include nb-install() {
   @include nb-theme-global();
-};
+}
 /* You can add global styles to this file, and also import other style files */
+
+zxing-scanner {
+  video {
+    height: 100vh !important;
+  }
+}
+
+nb-icon#attendee-icon {
+  align-self: normal;
+  padding: 0.25rem;
+  border: solid 1px #dbe4ff;
+  border-radius: 6px;
+  font-size: 2.25rem;
+  min-width: 2.25rem;
+}

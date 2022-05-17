@@ -1,0 +1,31 @@
+#qr-scanner {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+
+  nb-card {
+    margin-bottom: 0;
+
+    .already-scanned,
+    .not-registered {
+      display: flex;
+      align-items: center;
+      column-gap: 1rem;
+
+      button {
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+  }
+}

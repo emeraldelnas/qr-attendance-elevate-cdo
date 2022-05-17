@@ -1,0 +1,11 @@
+.already-scanned,
+.not-registered {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+
+  button {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}

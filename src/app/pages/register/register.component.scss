@@ -1,0 +1,68 @@
+.default-color {
+  color: #8f9bb3;
+}
+
+.top {
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+  img {
+    width: 100%;
+    max-width: 180px;
+  }
+}
+
+.register-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.title {
+  margin: 1rem 0 2rem 0;
+  h1 {
+    font-size: 1.25rem;
+    margin: 0 0 0.25rem 0;
+    line-height: 1;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1;
+  }
+}
+
+.form-control {
+  margin-bottom: 1rem;
+
+  .invalid-feedback {
+    color: #ff3d71;
+    font-size: 0.75rem;
+  }
+}
+
+.sex-options {
+  display: flex;
+}
+
+.qrcodeImage {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 0.5rem 0 1rem 0;
+}
+
+/* Add custom styles here */
+.center {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.qrcode-screen-btns {
+  text-align: center;
+  margin-top: 1rem;
+  display: flex;
+  flex-flow: column;
+  row-gap: 1rem;
+}

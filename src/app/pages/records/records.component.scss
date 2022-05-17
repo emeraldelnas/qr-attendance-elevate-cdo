@@ -1,0 +1,52 @@
+.top {
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+  img {
+    width: 100%;
+    max-width: 180px;
+  }
+}
+
+.records-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.totals-title {
+  margin: 1.5rem 0 0;
+  font-size: 0.85rem;
+  padding-bottom: 0.25rem;
+  border-bottom: solid 1px #eee;
+}
+.totals-container {
+  display: flex;
+  column-gap: 1.5rem;
+  margin-top: 0.5rem;
+
+  div {
+    > p {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      line-height: 1.25;
+    }
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+
+#event-report {
+  margin-top: 2rem;
+
+  th,
+  tr:not(:last-child) td {
+    padding-bottom: 0.5rem;
+  }
+}

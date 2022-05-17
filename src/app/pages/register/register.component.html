@@ -1,0 +1,168 @@
+<div class="top">
+  <img src="../../../assets/elevate-logo-black.svg" alt="Elevate Logo" />
+</div>
+
+<nb-card
+  [nbSpinner]="isLoading"
+  nbSpinnerStatus="danger"
+  nbSpinnerSize="large"
+  nbSpinnerMessage="Loading..."
+  class="register-container"
+>
+  <nb-card-body>
+    <form
+      *ngIf="!generateQR"
+      class="registration-form"
+      [formGroup]="registerForm"
+      (ngSubmit)="submit()"
+    >
+      <div class="title">
+        <h1>Level Up Fridays</h1>
+        <h2>Registration</h2>
+      </div>
+      <div class="form-control">
+        <label for="first-name" class="label">First Name</label>
+        <input
+          formControlName="firstName"
+          name="first-name"
+          id="first-name"
+          type="text"
+          nbInput
+          fullWidth
+          shape="semi-round"
+          placeholder="First Name"
+        />
+        <div *ngIf="showError(firstName)">
+          <div
+            *ngIf="(firstName?.errors)!['required']"
+            class="invalid-feedback"
+          >
+            Please enter your first name.
+          </div>
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="last-name" class="label">Last Name</label>
+        <input
+          formControlName="lastName"
+          name="last-name"
+          id="last-name"
+          type="text"
+          nbInput
+          fullWidth
+          shape="semi-round"
+          placeholder="Last Name"
+        />
+        <div *ngIf="showError(lastName)">
+          <div *ngIf="(lastName?.errors)!['required']" class="invalid-feedback">
+            Please enter your last name.
+          </div>
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="mobile" class="label">Mobile</label>
+        <input
+          formControlName="mobile"
+          name="mobile"
+          id="mobile"
+          type="tel"
+          nbInput
+          fullWidth
+          shape="semi-round"
+          placeholder="Mobile"
+        />
+        <div *ngIf="showError(mobile)">
+          <div *ngIf="(mobile?.errors)!['required']" class="invalid-feedback">
+            Please enter your mobile number.
+          </div>
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="birthdate" class="label">Birthdate</label>
+        <input
+          nbInput
+          fullWidth
+          shape="semi-round"
+          placeholder="Pick Date"
+          id="birthdate"
+          [nbDatepicker]="dateTimePicker"
+          formControlName="birthdate"
+          autocomplete="off"
+        />
+        <div *ngIf="showError(birthdate)">
+          <div
+            *ngIf="(birthdate?.errors)!['required']"
+            class="invalid-feedback"
+          >
+            Please enter your birth date.
+          </div>
+        </div>
+        <nb-datepicker #dateTimePicker></nb-datepicker>
+      </div>
+      <div class="form-control">
+        <label class="label" for="sex">Sex</label>
+        <nb-radio-group class="sex-options" formControlName="sex" name="sex">
+          <nb-radio
+            *ngFor="let option of sexOptions"
+            [value]="option.value"
+            [checked]="option.checked"
+            >{{ option.label }}</nb-radio
+          >
+        </nb-radio-group>
+      </div>
+      <div class="form-control">
+        <label for="leader" class="label">Small Group Leader</label>
+        <input
+          formControlName="leader"
+          name="leader"
+          id="leader"
+          type="text"
+          nbInput
+          fullWidth
+          shape="semi-round"
+          placeholder="Leader"
+        />
+      </div>
+      <!-- <div class="form-control">
+        <label class="label">Consent</label>
+        <signature-pad
+          #signature
+          id="sig"
+          [options]="signaturePadOptions"
+        ></signature-pad>
+      </div> -->
+      <div style="text-align: right; margin-top: 2rem">
+        <button nbButton status="primary">Submit</button>
+      </div>
+    </form>
+
+    <div class="qrcodeImage" id="qr-image">
+      <div *ngIf="generateQR">
+        <qrcode
+          #qrImage
+          [qrdata]="qrData"
+          [allowEmptyString]="true"
+          [ariaLabel]="'QR Code image with the following content...'"
+          [cssClass]="'center'"
+          [colorDark]="'#000000'"
+          [colorLight]="'#ffffff'"
+          [elementType]="'canvas'"
+          [errorCorrectionLevel]="'M'"
+          [imageSrc]="'./assets/a-elevate.png'"
+          [imageHeight]="qrLogo"
+          [imageWidth]="qrLogo"
+          [margin]="2"
+          [scale]="1"
+          [width]="qrImgWidth"
+          [title]="'A custom title attribute'"
+        ></qrcode>
+        <div class="qrcode-screen-btns">
+          <button nbButton status="primary" (click)="saveAsImage(qrImage)">
+            Download Your QR Code
+          </button>
+          <button nbButton ghost (click)="back()">Go Back</button>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

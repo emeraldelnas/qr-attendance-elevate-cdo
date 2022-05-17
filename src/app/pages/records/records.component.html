@@ -1,0 +1,92 @@
+<div class="top">
+  <img src="../../../assets/elevate-logo-black.svg" alt="Elevate Logo" />
+</div>
+
+<nb-card class="records-container">
+  <nb-card-body>
+    <div class="controls">
+      <div class="form-control">
+        <label for="eventDate" class="label">Event Date</label>
+        <input
+          nbInput
+          [(ngModel)]="eventDate"
+          fieldSize="small"
+          placeholder="Pick Date"
+          [nbDatepicker]="eventDatePicker"
+          id="eventDate"
+        />
+        <nb-datepicker
+          #eventDatePicker
+          (dateChange)="onEventDateChange($event)"
+        ></nb-datepicker>
+      </div>
+      <!-- <button nbButton (click)="printDiv()" outline status="primary">Print</button> -->
+    </div>
+
+    <p class="totals-title">Totals:</p>
+    <div class="totals-container">
+      <div class="total-attendees">
+        <p>
+          Attendees:&nbsp;<span>{{
+            (totals | async)?.totalAttendees || 0
+          }}</span>
+        </p>
+        <div class="details">
+          <p>
+            Male:&nbsp;<span>{{ (totals | async)?.totalMale || 0 }}</span>
+          </p>
+          <p>
+            Female:&nbsp;<span>{{ (totals | async)?.totalFemale || 0 }}</span>
+          </p>
+        </div>
+      </div>
+      <div class="total-first-timers">
+        <p>
+          First Timers:&nbsp;<span>{{
+            (totals | async)?.totalFirstTimers || 0
+          }}</span>
+        </p>
+        <div class="details">
+          <p>
+            Male:&nbsp;<span>{{
+              (totals | async)?.totalMaleFirstTimers || 0
+            }}</span>
+          </p>
+          <p>
+            Female:&nbsp;<span>{{
+              (totals | async)?.totalFemaleFirstTimers || 0
+            }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="event-report">
+        <table class="custom-table" width="100%">
+          <tr>
+            <th style="text-align: left; padding-right: 2rem">Name</th>
+            <th style="text-align: right; padding-right: 2rem">Age</th>
+            <th style="padding-right: 2rem">Sex</th>
+            <th>First-timer?</th>
+          </tr>
+          <tr *ngFor="let attendee of attendees | async">
+            <td style="padding-right: 2rem">
+              {{ attendee.lastName }}, {{ attendee.firstName }}
+            </td>
+            <td style="text-align: right; padding-right: 2rem">
+              {{ attendee.age }}
+            </td>
+            <td style="text-transform: capitalize; padding-right: 2rem">
+              {{ attendee.sex }}
+            </td>
+            <td>
+              {{ attendee.isFirstTimer ? "Yes" : "No" }}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div></div>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,58 @@
+<select
+  id="preferred-branch"
+  class="form-control"
+  [(ngModel)]="deviceSelected"
+  (ngModelChange)="onDeviceSelectChange($any($event))"
+>
+  <ng-template ngFor let-option [ngForOf]="availableDevices" let-i="index">
+    <option [ngValue]="option.deviceId" class="text-capitalize">
+      {{ option.label }}
+    </option>
+  </ng-template>
+</select>
+<zxing-scanner
+  [torch]="torchEnabled"
+  [device]="deviceCurrent"
+  (deviceChange)="onDeviceChange($event)"
+  (scanSuccess)="onCodeResult($event)"
+  [formats]="formatsEnabled"
+  [tryHarder]="tryHarder"
+  (permissionResponse)="onHasPermission($event)"
+  (camerasFound)="onCamerasFound($event)"
+  (torchCompatible)="onTorchCompatible($event)"
+></zxing-scanner>
+
+<nb-card>
+  <nb-card-body>
+    <div class="already-scanned">
+      <nb-icon status="success" icon="person-done-outline"></nb-icon>
+      <p>Already scanned.</p>
+      <button nbButton ghost size="small">Okay</button>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-body>
+    <div class="not-registered">
+      <nb-icon status="danger" icon="person-delete-outline"></nb-icon>
+      <p>Not registered.</p>
+      <button nbButton ghost size="small">Okay</button>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<!-- <nb-card *ngIf="showRegistrant">
+  <nb-card-body>
+    <nb-user
+      shape="rectangle"
+      [name]="scannedAttendee.name"
+      [title]="scannedAttendee.birthdate"
+    ></nb-user>
+  </nb-card-body>
+</nb-card> -->
+<nb-list>
+  <nb-list-item *ngFor="let attendee of attendees | async">
+    {{ attendee.firstName }} {{ attendee.lastName }}
+  </nb-list-item>
+</nb-list>

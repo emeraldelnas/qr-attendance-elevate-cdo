@@ -1,0 +1,30 @@
+<nb-card class="card-container" (click)="close()">
+  <nb-card-body>
+    <div class="attendee-container">
+      <nb-icon
+        *ngIf="!isBirthdayToday"
+        [status]="attendee.sex === 'male' ? 'info' : 'danger'"
+        icon="person-outline"
+        id="attendee-icon"
+      ></nb-icon>
+
+      <nb-icon
+        *ngIf="isBirthdayToday"
+        status="success"
+        icon="gift"
+        id="attendee-icon"
+      ></nb-icon>
+
+      <div class="attendee-info">
+        <div class="name-div">
+          <p class="name">
+            {{ attendee.firstName }} {{ attendee.lastName }},
+            <small class="sex">{{ attendee.sex }}</small>
+          </p>
+        </div>
+        <p class="birthdate">{{ attendee.birthdate }}, {{ age }}yrs old</p>
+        <p class="mobile">{{ attendee.mobile }}</p>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
